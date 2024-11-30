@@ -35,3 +35,20 @@ class for_day:
         for line in res.text.split("\n"):
             if "answer" in line or "level" in line:
                 print(re.sub("<[^<]+?>", "", line))
+
+
+@click.group()
+def cli():
+    pass
+
+
+@cli.command()
+@click.argument("day")
+def get_input(day):
+    url = f"https://adventofcode.com/{YEAR}/day/{day}/input"
+    res = requests.get(url, headers=HEADERS)
+    print(res.text)
+
+
+if __name__ == "__main__":
+    cli()
