@@ -1,0 +1,32 @@
+from util import *
+import aoc
+
+submit = aoc.for_day(1)
+
+
+@click.group()
+def cli():
+    pass
+
+
+def process_line(line):
+    return ints(line)
+
+
+@cli.command()
+@click.argument("input", type=click.File())
+def part1(input):
+    pairs = read_file(input) |> fmap$(ints) |*> zip |> fmap$(sorted) |*> zip
+    return submit.part(1, sum(abs(x - y) for (x, y) in pairs))
+
+
+@cli.command()
+@click.argument("input", type=click.File())
+def part2(input):
+    left, right = read_file(input) |> fmap$(ints) |*> zip
+    right = Counter(right)
+    return submit.part(2, sum(l * right[l] for l in left))
+
+
+if __name__ == "__main__":
+    cli()

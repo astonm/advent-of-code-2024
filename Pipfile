@@ -11,6 +11,7 @@ more-itertools = "*"
 requests = "*"
 varname = "*"
 networkx = {extras = ["default"], version = "*"}
+coconut = "*"
 
 [dev-packages]
 
