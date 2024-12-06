@@ -106,6 +106,9 @@ class Grid:
         self.width = len(self.lines[0])
         self.height = len(self.lines)
 
+    def __contains__(self, p):
+        return 0 <= p[0] < self.width and 0 <= p[1] < self.height
+
     def get(self, p, default=Throw):
         if 0 <= p[0] < self.width:
             if 0 <= p[1] < self.height:
