@@ -12,6 +12,7 @@ from more_itertools import *
 from parse import *
 from copy import *
 from math import *
+from operator import attrgetter, itemgetter, methodcaller
 from random import *
 from pprint import pprint, pformat
 from sys import exit, maxsize as maxint
@@ -426,6 +427,20 @@ def time_it(f):
         return result
 
     return wrap
+
+
+# i don't love how itertools.groupby works
+igroupby = groupby
+
+
+def groupby(seq, f):
+    out = defaultdict(list)
+    for x in seq:
+        out[f(x)].append(x)
+    return out.items()
+
+
+group_by = groupby
 
 
 def profile_it():
