@@ -12,6 +12,7 @@ from more_itertools import *
 from parse import *
 from copy import *
 from math import *
+from fractions import Fraction
 from operator import attrgetter, itemgetter, methodcaller
 from random import *
 from pprint import pprint, pformat
