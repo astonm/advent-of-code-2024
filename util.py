@@ -376,6 +376,9 @@ def prod(l):
     return reduce(lambda x, y: x * y, l)
 
 
+num = sum
+
+
 def sign(n):
     if not n:
         return 0
